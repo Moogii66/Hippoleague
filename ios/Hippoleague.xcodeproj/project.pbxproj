@@ -22,6 +22,7 @@
 		986C91E5356A557B960B0AFF /* libPods-Hippoleague.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C1E3541B8D282836E308E6 /* libPods-Hippoleague.a */; };
 		A339EFB1B5D348CF9D2AB476 /* SFProRounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = B66BA37287694635982F7014 /* SFProRounded-Ultralight.otf */; };
 		AB1C9CF80641465EA316D804 /* SFProRounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6CBC2ACF4AD6B74817A9 /* SFProRounded-Light.otf */; };
+		AE53325899794D2C9597F8F3 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C068972C21D04BB6A12AD394 /* PressStart2P-Regular.ttf */; };
 		BDDD7A1C8E9C4F9889E8E451 /* SFProRounded-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4CDD72D1233C463AB043EB20 /* SFProRounded-Thin.otf */; };
 		C8BF59A86BB24FC0B144A68E /* LikeguardDemoBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2871274C593440AC9D395C7B /* LikeguardDemoBoldItalic.ttf */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		9D7F52446E4D43F1B621113C /* SFProRounded-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProRounded-Regular.otf"; path = "../src/assets/fonts/SFProRounded-Regular.otf"; sourceTree = "<group>"; };
 		B49DC2060C1242E1A1AA6729 /* SFProRounded-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProRounded-Heavy.otf"; path = "../src/assets/fonts/SFProRounded-Heavy.otf"; sourceTree = "<group>"; };
 		B66BA37287694635982F7014 /* SFProRounded-Ultralight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProRounded-Ultralight.otf"; path = "../src/assets/fonts/SFProRounded-Ultralight.otf"; sourceTree = "<group>"; };
+		C068972C21D04BB6A12AD394 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PressStart2P-Regular.ttf"; path = "../src/assets/fonts/PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		EC64EE2A4D90158146BDEABA /* Pods-Hippoleague.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hippoleague.release.xcconfig"; path = "Target Support Files/Pods-Hippoleague/Pods-Hippoleague.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F67CC0E9B4014AAFA1CAD292 /* SFProRounded-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProRounded-Black.otf"; path = "../src/assets/fonts/SFProRounded-Black.otf"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				01E147ABDC0145EA8C213C04 /* SFProRounded-Semibold.otf */,
 				4CDD72D1233C463AB043EB20 /* SFProRounded-Thin.otf */,
 				B66BA37287694635982F7014 /* SFProRounded-Ultralight.otf */,
+				C068972C21D04BB6A12AD394 /* PressStart2P-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				1F2BA76EC528402998D05421 /* SFProRounded-Semibold.otf in Resources */,
 				BDDD7A1C8E9C4F9889E8E451 /* SFProRounded-Thin.otf in Resources */,
 				A339EFB1B5D348CF9D2AB476 /* SFProRounded-Ultralight.otf in Resources */,
+				AE53325899794D2C9597F8F3 /* PressStart2P-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
