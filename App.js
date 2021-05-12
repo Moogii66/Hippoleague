@@ -5,7 +5,7 @@ const App = ()=>{
 
   return(
     <View>
-      <Text style={{fontFamily;'SfPro'}}>sdfghghrtgr</Text>
+      <Text style={{fontFamily:'SfPro'}}>sdfghghrtgr</Text>
     </View>
   )
 }
