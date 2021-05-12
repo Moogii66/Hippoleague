@@ -1,40 +1,68 @@
-import React from 'react';
+import * as React from 'react';
 import {
   ImageBackground,
   SafeAreaView,
   StyleSheet,
   Text,
   View,
+  Button,
+  Touchable,
+  TouchableOpacity,
 } from 'react-native';
 
-const App = () => (
+const GameScreen = ({navigation}) => (
   <View style={styles.container}>
     <SafeAreaView>
       <Text
         style={{
           paddingTop: 70,
           textAlign: 'center',
-          fontFamily: 'SFProRounded-Bold',
-          fontSize: 30,
+          fontFamily: 'PressStart2P-Regular',
+          fontSize: 20,
+          color: 'white',
         }}>
-        HippoLeague
+        HIPPOLEAGUE
       </Text>
     </SafeAreaView>
-    <ImageBackground
-      source={require('./src/assets/images/soccer.jpeg')}
-      style={styles.image}></ImageBackground>
-    <View style={{width: 200, height: 100}}>
+
+    <TouchableOpacity
+      style={{alignItems: 'center'}}
+      onPress={() => navigation.navigate('DashboardScreen')}>
+      <ImageBackground
+        source={require('../assets/images/soccer.jpeg')}
+        style={[styles.image, {marginTop: 50}]}
+        imageStyle={{borderRadius: 15}}></ImageBackground>
       <Text style={styles.text}>Soccer</Text>
-    </View>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={{alignItems: 'center'}}>
+      <ImageBackground
+        source={require('../assets/images/2k21.jpg')}
+        style={[styles.image, {marginTop: 20}]}
+        imageStyle={{borderRadius: 15}}></ImageBackground>
+      <Text style={[styles.text]}>2k21</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={{alignItems: 'center'}}>
+      <ImageBackground
+        source={require('../assets/images/fifa.png')}
+        style={[styles.image, {marginTop: 20}]}
+        imageStyle={{borderRadius: 15}}></ImageBackground>
+      <Text style={styles.text}>FIFA</Text>
+    </TouchableOpacity>
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: 'gray',
   },
   image: {
+    // borderWidth:1,
+    // borderRadius:10,
     width: 200,
     height: 100,
     resizeMode: 'cover',
@@ -42,11 +70,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontSize: 42,
+    fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    backgroundColor: '#000000a0',
   },
 });
 
-export default App;
+export default GameScreen;
