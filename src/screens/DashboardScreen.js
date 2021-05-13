@@ -1,23 +1,27 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, SafeAreaView, Pressable, Button} from 'react-native';
 
 const DashboardScreen = ({navigation}) => {
   const [titleText, setTitleText] = useState("Bird's Nest");
-  const bodyText = useState('This is not really a bird nest.');
-
+  const [bodyText, setBodyText] = useState('This is not really a bird nest.');
   const onPressTitle = () => {
     setTitleText("Bird's Nest [pressed]");
   };
 
   return (
-    <Text style={styles.baseText}>
-      <Text style={styles.titleText} onPress={onPressTitle}>
-        {titleText}
-        {'\n'}
-        {'\n'}
+    <SafeAreaView>
+      <Button title="Back" onPress={() => navigation.pop()}></Button>
+      <Text style={styles.baseText}>
+        <Pressable onPress={onPressTitle}>
+          <Text style={styles.titleText}>
+            {titleText}
+            {'\n'}
+            {'\n'}
+          </Text>
+        </Pressable>
+        <Text numberOfLines={5}>{bodyText}</Text>
       </Text>
-      <Text numberOfLines={5}>{bodyText}</Text>
-    </Text>
+    </SafeAreaView>
   );
 };
 
