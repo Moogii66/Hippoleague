@@ -1,78 +1,148 @@
-import * as React from 'react';
+import React, {useState} from 'react';
+import {Icon} from 'react-native-elements';
 import {
-  ImageBackground,
+  FlatList,
   SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
-  View,
-  Button,
-  Touchable,
   TouchableOpacity,
+  Image,
+  ImageBackground,
+  View,
 } from 'react-native';
+import {icons, images, index, theme} from '../constants';
+import {wp, hp, ft} from '../constants/theme';
 
-const GameScreen = ({navigation}) => (
-  <View style={styles.container}>
-    <SafeAreaView>
-      <Text
-        style={{
-          paddingTop: 70,
-          textAlign: 'center',
-          fontFamily: 'PressStart2P-Regular',
-          fontSize: 20,
-          color: 'white',
-        }}>
-        HIPPOLEAGUE
-      </Text>
-    </SafeAreaView>
+export const DATA = [
+  {
+    id: '0',
+    title: 'NBA 2K21',
+    image: require('../assets/images/nba.png'),
+  },
+  {
+    id: '1',
+    title: 'FIFA 2021',
+    image: require('../assets/images/fifa.png'),
+  },
+  {
+    id: '2',
+    title: 'Table Soccer',
+    image: require('../assets/images/table.png'),
+  },
+];
 
+const Item = ({item, onPress, backgroundColor, textColor}) => (
+  <View>
     <TouchableOpacity
-      style={{alignItems: 'center'}}
-      onPress={() => navigation.navigate('DashboardScreen')}>
+      onPress={onPress}
+      style={[[styles.item, backgroundColor], {borderRadius: 10}]}>
       <ImageBackground
-        source={require('../assets/images/soccer.jpeg')}
-        style={[styles.image, {marginTop: 50}]}
-        imageStyle={{borderRadius: 15}}></ImageBackground>
-      <Text style={styles.text}>Soccer</Text>
-    </TouchableOpacity>
-
-    <TouchableOpacity style={{alignItems: 'center'}}>
-      <ImageBackground
-        source={require('../assets/images/2k21.jpg')}
-        style={[styles.image, {marginTop: 20}]}
-        imageStyle={{borderRadius: 15}}></ImageBackground>
-      <Text style={[styles.text]}>2k21</Text>
-    </TouchableOpacity>
-
-    <TouchableOpacity style={{alignItems: 'center'}}>
-      <ImageBackground
-        source={require('../assets/images/fifa.png')}
-        style={[styles.image, {marginTop: 20}]}
-        imageStyle={{borderRadius: 15}}></ImageBackground>
-      <Text style={styles.text}>FIFA</Text>
+        source={item.image}
+        style={[styles.image, {marginTop: 0, width: 260, height: 340}]}
+        imageStyle={{borderRadius: 0}}
+      />
     </TouchableOpacity>
   </View>
 );
 
+const GameScreen = ({navigation}) => {
+  const [selectedId, setSelectedId] = useState(null);
+  const renderItem = ({item}) => {
+    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+    const color = item.id === selectedId ? 'white' : 'black';
+
+    return (
+      <Item
+        item={item}
+        onPress={() =>
+          navigation.navigate('Schedule', {
+            data: DATA,
+            itemId: item.id,
+          })
+        }
+        backgroundColor={{backgroundColor}}
+        textColor={{color}}
+      />
+    );
+  };
+
+  return (
+    <View>
+      <SafeAreaView>
+        <TouchableOpacity
+          onPress={() => navigation.pop()}
+          style={{width: wp(33), paddingLeft: 20}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              borderRadius: 22,
+              borderWidth: 1,
+            }}>
+            <Image
+              source={icons.logOut}
+              resizeMode="contain"
+              style={{
+                width: 30,
+                height: 30,
+              }}
+            />
+            <Text style={{paddingLeft: 10, fontSize: 17}}>Log Out</Text>
+          </View>
+        </TouchableOpacity>
+        <View>
+          <Text
+            style={{
+              paddingTop: 30,
+              paddingLeft: 20,
+              fontFamily: 'SF Pro Rounded',
+              fontWeight: '900',
+              fontSize: 12,
+              color: '#AAAAAA',
+            }}>
+            Өдрийн мэнд
+          </Text>
+          <Text
+            style={{
+              paddingLeft: 20,
+              fontFamily: 'SF Pro Rounded',
+              fontStyle: 'normal',
+              fontWeight: '200',
+              fontSize: 43,
+              color: '#000000',
+            }}>
+            Мөөгий
+          </Text>
+        </View>
+        <View>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            data={DATA}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            extraData={selectedId}
+          />
+        </View>
+      </SafeAreaView>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'gray',
+    marginTop: StatusBar.currentHeight || 0,
   },
-  image: {
-    // borderWidth:1,
-    // borderRadius:10,
-    width: 200,
-    height: 100,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+  item: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginVertical: 8,
+    marginHorizontal: 16,
   },
-  text: {
-    color: 'white',
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  title: {
+    fontSize: 32,
   },
 });
 

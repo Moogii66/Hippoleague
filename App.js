@@ -1,9 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-
-import DashboardScreen from './src/screens/DashboardScreen';
-import GameScreen from './src/screens/GameScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import Tabs from './src/components/bottomTab';
 
 const Stack = createStackNavigator();
 
@@ -14,9 +13,9 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={'GameScreen'}>
-        <Stack.Screen name="GameScreen" component={GameScreen} />
-        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+        initialRouteName={'LoginScreen'}>
+        <Stack.Screen name="Tabs" component={Tabs} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
