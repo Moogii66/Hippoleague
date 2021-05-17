@@ -1,20 +1,28 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
 import GameScreen from '../screens/GameScreen';
 import Schedule from '../screens/Schedule';
 import Standings from '../screens/Standings';
 import Profile from '../screens/Profile';
 import {Image, View, Text} from 'react-native';
-import {icons, images, index, theme} from '../constants';
+import {COLORS, FONTS, icons, images, index, theme, SIZES} from '../constants';
+import {hp, wp} from '../constants/theme';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Tab.Navigator
       tabBarOptions={{
         showLabel: false,
         style: {
+          width: wp(90),
+          height: hp(10),
           position: 'absolute',
           bottom: 25,
           left: 20,
@@ -23,7 +31,7 @@ const Tabs = () => {
           backgroundColor: '#FFFFFF',
           borderRadius: 15,
           height: 90,
-          shadowColor: '#e32f45',
+          shadowColor: COLORS.brand,
           shadowOffset: {width: 0, height: 10},
           shadowOpacity: 0.25,
           shadowRadius: 3.5,
@@ -35,19 +43,21 @@ const Tabs = () => {
         component={GameScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <View
-              style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+            <View style={[styles.tabItems, {top: insets.bottom / 2}]}>
               <Image
-                source={focused ? icons.TabHome1_a : icons.TabHome1}
+                source={focused ? icons.HomeFill : icons.Home}
                 resizeMode="contain"
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? '#e32f45' : '#748c94',
                 }}
               />
               <Text
-                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                style={{
+                  color: focused ? COLORS.brand : COLORS.tabgrey,
+                  ...FONTS.tabbar,
+                  marginTop: hp(1),
+                }}>
                 Home
               </Text>
             </View>
@@ -59,19 +69,21 @@ const Tabs = () => {
         component={Schedule}
         options={{
           tabBarIcon: ({focused}) => (
-            <View
-              style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+            <View style={[styles.tabItems, {top: insets.bottom / 2}]}>
               <Image
-                source={focused ? icons.TabHome2_a : icons.TabHome2}
+                source={focused ? icons.ScheduleFill : icons.Schedule}
                 resizeMode="contain"
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? '#e32f45' : '#748c94',
                 }}
               />
               <Text
-                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                style={{
+                  color: focused ? COLORS.brand : COLORS.tabgrey,
+                  ...FONTS.tabbar,
+                  marginTop: hp(1),
+                }}>
                 Schedule
               </Text>
             </View>
@@ -83,19 +95,21 @@ const Tabs = () => {
         component={Standings}
         options={{
           tabBarIcon: ({focused}) => (
-            <View
-              style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+            <View style={[styles.tabItems, {top: insets.bottom / 2}]}>
               <Image
-                source={focused ? icons.TabHome3_a : icons.TabHome3}
+                source={focused ? icons.StandingsFill : icons.Standings}
                 resizeMode="contain"
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? '#e32f45' : '#748c94',
                 }}
               />
               <Text
-                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                style={{
+                  color: focused ? COLORS.brand : COLORS.tabgrey,
+                  ...FONTS.tabbar,
+                  marginTop: hp(1),
+                }}>
                 Standings
               </Text>
             </View>
@@ -107,19 +121,21 @@ const Tabs = () => {
         component={Profile}
         options={{
           tabBarIcon: ({focused}) => (
-            <View
-              style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+            <View style={[styles.tabItems, {top: insets.bottom / 2}]}>
               <Image
-                source={focused ? icons.TabHome4_a : icons.TabHome4}
+                source={focused ? icons.ProfileFill : icons.Profile}
                 resizeMode="contain"
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? '#e32f45' : '#748c94',
                 }}
               />
               <Text
-                style={{color: focused ? '#e32f45' : '#748c94', fontSize: 12}}>
+                style={{
+                  color: focused ? COLORS.brand : COLORS.tabgrey,
+                  ...FONTS.tabbar,
+                  marginTop: hp(1),
+                }}>
                 Profile
               </Text>
             </View>
@@ -130,3 +146,14 @@ const Tabs = () => {
   );
 };
 export default Tabs;
+
+const styles = StyleSheet.create({
+  tabs: {
+    fontSize: SIZES.text,
+    fontFamily: FONTS.brandFontBold,
+  },
+  tabItems: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

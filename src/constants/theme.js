@@ -24,11 +24,21 @@ export const hp = heightPercent => {
   return PixelRatio.roundToNearestPixel((screenHeight * elemHeight) / 100);
 };
 
-export const FONTS = {};
+export const FONTS = {
+  tabbar: {fontFamily: 'PressStart2P-Regular', fontSize: ft(7)},
+  brandFontBold: 'PressStart2P-Bold',
+};
 
-export const COLORS = {};
+export const COLORS = {
+  brand: '#F74C11',
+  tabgrey: '#878787',
+};
 
-export const SIZES = {};
+export const SIZES = {
+  title: 18,
+  header: 16,
+  text: 12,
+};
 
 const appTheme = {COLORS, SIZES, FONTS};
 export default appTheme;
