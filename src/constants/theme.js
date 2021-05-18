@@ -25,13 +25,15 @@ export const hp = heightPercent => {
 };
 
 export const FONTS = {
-  tabbar: {fontFamily: 'PressStart2P-Regular', fontSize: ft(7)},
-  brandFontBold: 'PressStart2P-Bold',
+  brandFont: 'PressStart2P-Regular',
 };
 
 export const COLORS = {
   brand: '#F74C11',
   tabgrey: '#878787',
+  white: '#ffffff',
+  greyText: '#C2C2C2',
+  purpleText: '#D5A2FF',
 };
 
 export const SIZES = {

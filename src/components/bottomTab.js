@@ -9,6 +9,7 @@ import Profile from '../screens/Profile';
 import {Image, View, Text} from 'react-native';
 import {COLORS, FONTS, icons, images, index, theme, SIZES} from '../constants';
 import {hp, wp} from '../constants/theme';
+import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -53,11 +54,10 @@ const Tabs = () => {
                 }}
               />
               <Text
-                style={{
-                  color: focused ? COLORS.brand : COLORS.tabgrey,
-                  ...FONTS.tabbar,
-                  marginTop: hp(1),
-                }}>
+                style={[
+                  {color: focused ? COLORS.brand : COLORS.tabgrey},
+                  styles.tabbarText,
+                ]}>
                 Home
               </Text>
             </View>
@@ -79,11 +79,10 @@ const Tabs = () => {
                 }}
               />
               <Text
-                style={{
-                  color: focused ? COLORS.brand : COLORS.tabgrey,
-                  ...FONTS.tabbar,
-                  marginTop: hp(1),
-                }}>
+                style={[
+                  {color: focused ? COLORS.brand : COLORS.tabgrey},
+                  styles.tabbarText,
+                ]}>
                 Schedule
               </Text>
             </View>
@@ -105,11 +104,10 @@ const Tabs = () => {
                 }}
               />
               <Text
-                style={{
-                  color: focused ? COLORS.brand : COLORS.tabgrey,
-                  ...FONTS.tabbar,
-                  marginTop: hp(1),
-                }}>
+                style={[
+                  {color: focused ? COLORS.brand : COLORS.tabgrey},
+                  styles.tabbarText,
+                ]}>
                 Standings
               </Text>
             </View>
@@ -131,11 +129,10 @@ const Tabs = () => {
                 }}
               />
               <Text
-                style={{
-                  color: focused ? COLORS.brand : COLORS.tabgrey,
-                  ...FONTS.tabbar,
-                  marginTop: hp(1),
-                }}>
+                style={[
+                  {color: focused ? COLORS.brand : COLORS.tabgrey},
+                  styles.tabbarText,
+                ]}>
                 Profile
               </Text>
             </View>
@@ -148,12 +145,13 @@ const Tabs = () => {
 export default Tabs;
 
 const styles = StyleSheet.create({
-  tabs: {
-    fontSize: SIZES.text,
-    fontFamily: FONTS.brandFontBold,
-  },
   tabItems: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tabbarText: {
+    fontFamily: FONTS.brandFont,
+    marginTop: hp(1),
+    fontSize: RFPercentage(1.2),
   },
 });

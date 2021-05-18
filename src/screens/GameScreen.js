@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import {icons, images, index, theme} from '../constants';
 import {wp, hp, ft} from '../constants/theme';
+import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 
 export const DATA = [
   {
@@ -39,8 +40,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
       style={[[styles.item, backgroundColor], {borderRadius: 10}]}>
       <ImageBackground
         source={item.image}
-        style={[styles.image, {marginTop: 0, width: 260, height: 340}]}
-        imageStyle={{borderRadius: 0}}
+        style={[styles.image, {width: 260, height: 340}]}
       />
     </TouchableOpacity>
   </View>
@@ -49,7 +49,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
 const GameScreen = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(null);
   const renderItem = ({item}) => {
-    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+    // const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
     const color = item.id === selectedId ? 'white' : 'black';
 
     return (
@@ -61,7 +61,7 @@ const GameScreen = ({navigation}) => {
             itemId: item.id,
           })
         }
-        backgroundColor={{backgroundColor}}
+        // backgroundColor={{backgroundColor}}
         textColor={{color}}
       />
     );
@@ -109,7 +109,7 @@ const GameScreen = ({navigation}) => {
               fontFamily: 'SF Pro Rounded',
               fontStyle: 'normal',
               fontWeight: '200',
-              fontSize: 43,
+              fontSize: RFPercentage(5),
               color: '#000000',
             }}>
             Мөөгий
@@ -117,7 +117,7 @@ const GameScreen = ({navigation}) => {
         </View>
         <View>
           <FlatList
-            showsVerticalScrollIndicator={false}
+            // showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             horizontal
             data={DATA}
