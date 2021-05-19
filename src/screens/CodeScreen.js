@@ -9,20 +9,25 @@ import {
   StyleSheet,
   Button,
   ImageBackground,
+  TextBase,
+  StatusBar,
 } from 'react-native';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 import {icons, images, index, theme} from '../constants';
 import {wp, hp, ft, FONTS, COLORS} from '../constants/theme';
+import FormInput from '../components/FormInput';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const LoginScreen = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('test@mail.com');
   const [password, onChangePassword] = React.useState('password');
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ImageBackground
-        source={images.backgroundImage}
-        style={styles.backgroundImage}>
+    <ImageBackground
+      source={images.backgroundImage}
+      style={styles.backgroundImage}>
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar barStyle="light-content" />
         <View style={{alignItems: 'center'}}>
           <View>
             <Image
@@ -37,28 +42,33 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.form}>
-            <Text style={styles.text}>Enter your email for verify</Text>
-            <View>
-              <TextInput
-                style={styles.input}
-                // onChangeText={onChangeNumber}
-                // value={number}
-                placeholder="Email"
-                keyboardType="numeric"
-                placeholderTextColor={COLORS.purpleText}
-              />
-              <View
+            <Text style={styles.text}>Enter your code from email</Text>
+            <FormInput placeholder="Code" keyboardType="number-pad" />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('RegisterScreen')}>
+              <ImageBackground
+                source={images.button1}
                 style={{
-                  height: hp(0.3),
-                  width: wp(55.2),
-                  backgroundColor: COLORS.purpleText,
-                }}
-              />
-            </View>
+                  width: wp(50),
+                  height: hp(5.29),
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text
+                  style={{
+                    fontFamily: FONTS.brandFont,
+                    color: COLORS.white,
+                    paddingTop: hp(0.6),
+                    margin: hp(1),
+                  }}>
+                  OK
+                </Text>
+              </ImageBackground>
+            </TouchableOpacity>
           </View>
         </View>
-      </ImageBackground>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
@@ -80,18 +90,12 @@ const styles = StyleSheet.create({
   },
   form: {
     width: wp(72.53),
-    height: hp(25),
+    height: hp(30),
     backgroundColor: '#00032580',
     borderRadius: 15,
     justifyContent: 'space-evenly',
+    paddingTop: hp(3),
     alignItems: 'center',
-  },
-  input: {
-    height: hp(4.21),
-    width: wp(55.2),
-    color: COLORS.white,
-    fontFamily: FONTS.brandFont,
-    fontSize: RFPercentage(1.5),
   },
 });
 

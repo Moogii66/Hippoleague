@@ -7,19 +7,22 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  StatusBar,
 } from 'react-native';
 import {icons, images, index, theme} from '../constants';
 import {wp, hp, ft, FONTS, COLORS} from '../constants/theme';
+import FormInput from '../components/FormInput';
 import * as Animatable from 'react-native-animatable';
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 
 const StartScreen = ({navigation}) => {
   const rubberButton = useRef();
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ImageBackground
-        source={images.backgroundImage}
-        style={styles.backgroundImage}>
+    <ImageBackground
+      source={images.backgroundImage}
+      style={styles.backgroundImage}>
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar barStyle="light-content" />
         <View style={{alignItems: 'center'}}>
           <View style={{flex: 3}}>
             <Image
@@ -37,7 +40,7 @@ const StartScreen = ({navigation}) => {
           <View style={{flex: 1}}>
             <TouchableOpacity
               style={styles.btnContainer}
-              onPress={() => navigation.navigate('SignupScreen')}>
+              onPress={() => navigation.navigate('SendmailScreen')}>
               <ImageBackground source={images.button} style={styles.button}>
                 <Text style={styles.btnText}>SIGN UP</Text>
               </ImageBackground>
@@ -51,8 +54,8 @@ const StartScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-      </ImageBackground>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 

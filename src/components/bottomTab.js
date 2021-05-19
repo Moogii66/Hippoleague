@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import GameScreen from '../screens/GameScreen';
-import Schedule from '../screens/Schedule';
+import ScheduleScreen from '../screens/ScheduleScreen';
 import Standings from '../screens/Standings';
 import Profile from '../screens/Profile';
 import {Image, View, Text} from 'react-native';
@@ -22,21 +22,21 @@ const Tabs = () => {
       tabBarOptions={{
         showLabel: false,
         style: {
-          width: wp(90),
-          height: hp(10),
-          position: 'absolute',
-          bottom: 25,
-          left: 20,
-          right: 20,
-          elevation: 0,
-          backgroundColor: '#FFFFFF',
-          borderRadius: 15,
-          height: 90,
-          shadowColor: COLORS.brand,
-          shadowOffset: {width: 0, height: 10},
-          shadowOpacity: 0.25,
-          shadowRadius: 3.5,
-          elevation: 5,
+          width: wp(100),
+          height: hp(11),
+          backgroundColor: COLORS.background,
+          // position: 'absolute',
+          // bottom: 25,
+          // left: 20,
+          // right: 20,
+          // elevation: 0,
+          // borderRadius: 15,
+          // height: 90,
+          // shadowColor: COLORS.white,
+          // shadowOffset: {width: 0, height: 10},
+          // shadowOpacity: 0.25,
+          // shadowRadius: 3.5,
+          // elevation: 5,
         },
       }}>
       <Tab.Screen
@@ -65,8 +65,8 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Schedule"
-        component={Schedule}
+        name="ScheduleScreen"
+        component={ScheduleScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <View style={[styles.tabItems, {top: insets.bottom / 2}]}>

@@ -9,21 +9,57 @@ import {
   View,
   TouchableOpacity,
   Touchable,
+  Modal,
 } from 'react-native';
 import {DATA} from './GameScreen';
-import {Picker} from '@react-native-picker/picker';
+import AppBar from '../components/AppBar';
+import {COLORS, FONTS, icons} from '../constants';
+import GamePicker from '../components/GamePicker';
+import {hp, wp} from '../constants/theme';
 
-const Schedule = ({navigation, route}) => {
+const ScheduleScreen = ({navigation, route}) => {
   let itemID = 0;
 
   if (route.params?.itemId) {
     itemID = route.params.itemId;
   }
 
-  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [chooseData, setChooseData] = useState('Table Soccer');
+  const [modalVisible, setModalVisible] = useState(false);
+  const changeModalVisible = bool => {
+    setModalVisible(bool);
+  };
 
+  const setData = option => {
+    setChooseData(option);
+  };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.background}}>
+      <AppBar />
+      <TouchableOpacity
+        onPress={() => changeModalVisible(true)}
+        style={{
+          height: hp(4),
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingHorizontal: wp(3),
+        }}>
+        <Text style={{fontFamily: FONTS.brandFont, color: COLORS.white}}>
+          {chooseData}
+        </Text>
+        <Image
+          source={icons.drop}
+          style={{resizeMode: 'contain', height: hp(1.7), width: wp(4.53)}}
+        />
+      </TouchableOpacity>
+      <Modal
+        transparent={true}
+        animationType="fade"
+        visible={modalVisible}
+        nRequestClose={() => changeModalVisible(false)}>
+        <GamePicker changeModalVisible={changeModalVisible} setData={setData} />
+      </Modal>
       {DATA.length > 0 && (
         <>
           <View
@@ -91,26 +127,6 @@ const Schedule = ({navigation, route}) => {
                 </Text>
               </View>
             </TouchableOpacity>
-            {/* <Picker
-              selectedValue={selectedValue}
-              style={{height: 50, width: 150}}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedValue(itemValue)
-              }>
-              <Picker.Item label={DATA[0].title} value="0" />
-              <Picker.Item label={DATA[1].title} value="1" />
-              <Picker.Item label={DATA[2].title} value="2" />
-            </Picker> */}
-            {/* <View style={{width: 100, height: 100}}>
-              <Picker
-                selectedValue={selectedLanguage}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedLanguage(itemValue)
-                }>
-                <Picker.Item label="Java" value="java" />
-                <Picker.Item label="JavaScript" value="js" />
-              </Picker>
-            </View> */}
           </View>
           <Text>Schedule Screen</Text>
           <Text>Item ID: {itemID}</Text>
@@ -144,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Schedule;
+export default ScheduleScreen;

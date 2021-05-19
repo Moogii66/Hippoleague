@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Icon} from 'react-native-elements';
 import {
   FlatList,
@@ -10,10 +10,12 @@ import {
   Image,
   ImageBackground,
   View,
+  TextBase,
 } from 'react-native';
 import {icons, images, index, theme} from '../constants';
-import {wp, hp, ft} from '../constants/theme';
+import {wp, hp, ft, COLORS, FONTS} from '../constants/theme';
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
+import color from 'color';
 
 export const DATA = [
   {
@@ -38,7 +40,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
     <TouchableOpacity
       onPress={onPress}
       style={[[styles.item, backgroundColor], {borderRadius: 10}]}>
-      <ImageBackground
+      <Image
         source={item.image}
         style={[styles.image, {width: 260, height: 340}]}
       />
@@ -56,7 +58,7 @@ const GameScreen = ({navigation}) => {
       <Item
         item={item}
         onPress={() =>
-          navigation.navigate('Schedule', {
+          navigation.navigate('ScheduleScreen', {
             data: DATA,
             itemId: item.id,
           })
@@ -67,53 +69,54 @@ const GameScreen = ({navigation}) => {
     );
   };
 
+  const [greet, setGreet] = useState('');
+
+  const findGreet = () => {
+    const hrs = new Date().getHours();
+    if (hrs === 0 || hrs < 12) return setGreet('Morning');
+    if (hrs === 1 || hrs < 17) return setGreet('Afternoon');
+    setGreet('Evening');
+  };
+
+  useEffect(() => {
+    findGreet();
+  }, []);
+
   return (
-    <View>
-      <SafeAreaView>
-        <TouchableOpacity
-          onPress={() => navigation.pop()}
-          style={{width: wp(33), paddingLeft: 20}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              borderRadius: 22,
-              borderWidth: 1,
-            }}>
-            <Image
-              source={icons.logOut}
-              resizeMode="contain"
-              style={{
-                width: 30,
-                height: 30,
-              }}
-            />
-            <Text style={{paddingLeft: 10, fontSize: 17}}>Log Out</Text>
+    <View style={{flex: 1, backgroundColor: COLORS.background}}>
+      <SafeAreaView style={{paddingTop: hp(2)}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: wp(4),
+          }}>
+          <View>
+            <Text
+              style={[
+                styles.greeting,
+                {fontSize: RFPercentage(1.8), color: COLORS.greyText},
+              ]}>{`Good ${greet} `}</Text>
+            <Text
+              style={[
+                styles.greeting,
+                {marginTop: hp(1), fontSize: RFPercentage(2.5)},
+              ]}>
+              Moogii
+            </Text>
           </View>
-        </TouchableOpacity>
-        <View>
-          <Text
-            style={{
-              paddingTop: 30,
-              paddingLeft: 20,
-              fontFamily: 'SF Pro Rounded',
-              fontWeight: '900',
-              fontSize: 12,
-              color: '#AAAAAA',
-            }}>
-            Өдрийн мэнд
-          </Text>
-          <Text
-            style={{
-              paddingLeft: 20,
-              fontFamily: 'SF Pro Rounded',
-              fontStyle: 'normal',
-              fontWeight: '200',
-              fontSize: RFPercentage(5),
-              color: '#000000',
-            }}>
-            Мөөгий
-          </Text>
+          <View>
+            <TouchableOpacity>
+              <Image
+                source={images.profilePic}
+                style={{
+                  resizeMode: 'contain',
+                  width: wp(14.4),
+                  height: hp(6.65),
+                }}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
         <View>
           <FlatList
@@ -132,14 +135,20 @@ const GameScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  greeting: {
+    color: COLORS.white,
+    fontFamily: FONTS.brandFont,
+  },
   container: {
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    paddingLeft: 10,
-    paddingRight: 10,
+    // paddingLeft: 10,
+    // paddingRight: 10,
     marginVertical: 8,
-    marginHorizontal: 16,
+    // marginHorizontal: 16,
+    // borderWidth: 1,
+    // borderColor: 'red',
   },
   title: {
     fontSize: 32,

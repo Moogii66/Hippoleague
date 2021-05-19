@@ -18,7 +18,7 @@ import {wp, hp, ft, FONTS, COLORS} from '../constants/theme';
 import FormInput from '../components/FormInput';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const LoginScreen = ({navigation}) => {
+const RegisterScreen = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('test@mail.com');
   const [password, onChangePassword] = React.useState('password');
 
@@ -45,8 +45,10 @@ const LoginScreen = ({navigation}) => {
             {/* <View style={{justifyContent: 'flex-start'}}> */}
             <FormInput placeholder="Name" />
             <FormInput placeholder="Password" />
+            <FormInput placeholder="Confirm password" />
             {/* </View> */}
-            <TouchableOpacity onPress={() => navigation.navigate('Tabs')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('LoginScreen')}>
               <ImageBackground
                 source={images.button1}
                 style={{
@@ -63,9 +65,8 @@ const LoginScreen = ({navigation}) => {
                     color: COLORS.white,
                     paddingTop: hp(0.6),
                     margin: hp(1),
-                    fontSize: RFPercentage(1.7),
                   }}>
-                  SIGN IN
+                  OK
                 </Text>
               </ImageBackground>
             </TouchableOpacity>
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
   },
   form: {
     width: wp(72.53),
-    height: hp(30),
+    height: hp(40),
     backgroundColor: '#00032580',
     borderRadius: 15,
     justifyContent: 'space-evenly',
@@ -103,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default RegisterScreen;
