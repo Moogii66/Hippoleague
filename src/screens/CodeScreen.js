@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     alignItems: 'center',
+    backgroundColor: COLORS.background,
   },
   form: {
     width: wp(72.53),
