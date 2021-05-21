@@ -10,12 +10,32 @@ import {
   TouchableOpacity,
   Touchable,
   Modal,
+  TextBase,
 } from 'react-native';
 import {DATA} from './GameScreen';
 import AppBar from '../components/AppBar';
 import {COLORS, FONTS, icons} from '../constants';
 import GamePicker from '../components/GamePicker';
 import {hp, wp} from '../constants/theme';
+import color from 'color';
+
+export const ScheduleData = [
+  {
+    id: '0',
+    title: 'NBA 2K21',
+    image: require('../assets/images/nba.png'),
+  },
+  {
+    id: '1',
+    title: 'FIFA 2021',
+    image: require('../assets/images/fifa.png'),
+  },
+  {
+    id: '2',
+    title: 'Table Soccer',
+    image: require('../assets/images/table.png'),
+  },
+];
 
 const ScheduleScreen = ({navigation, route}) => {
   let itemID = 0;
@@ -33,13 +53,15 @@ const ScheduleScreen = ({navigation, route}) => {
   const setData = option => {
     setChooseData(option);
   };
+
+  const [chooseDay, setChooseDay] = useState('1');
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.background}}>
       <AppBar />
       <TouchableOpacity
         onPress={() => changeModalVisible(true)}
         style={{
-          height: hp(4),
+          height: hp(6),
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -60,7 +82,65 @@ const ScheduleScreen = ({navigation, route}) => {
         nRequestClose={() => changeModalVisible(false)}>
         <GamePicker changeModalVisible={changeModalVisible} setData={setData} />
       </Modal>
-      {DATA.length > 0 && (
+      <View
+        style={{
+          width: wp(100),
+          height: hp(6),
+          borderWidth: 1,
+          borderTopColor: COLORS.brand,
+          borderBottomColor: COLORS.brand,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+        }}>
+        <TouchableOpacity onPress={() => setChooseDay(1)}>
+          <Text
+            style={[
+              {color: chooseDay == 1 ? COLORS.brand : COLORS.greyText},
+              styles.dayBtn,
+            ]}>
+            Mon
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setChooseDay(2)}>
+          <Text
+            style={[
+              {color: chooseDay == 2 ? COLORS.brand : COLORS.greyText},
+              styles.dayBtn,
+            ]}>
+            Tue
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setChooseDay(3)}>
+          <Text
+            style={[
+              {color: chooseDay == 3 ? COLORS.brand : COLORS.greyText},
+              styles.dayBtn,
+            ]}>
+            Wed
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setChooseDay(4)}>
+          <Text
+            style={[
+              {color: chooseDay == 4 ? COLORS.brand : COLORS.greyText},
+              styles.dayBtn,
+            ]}>
+            Thu
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setChooseDay(5)}>
+          <Text
+            style={[
+              {color: chooseDay == 5 ? COLORS.brand : COLORS.greyText},
+              styles.dayBtn,
+            ]}>
+            Fri
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* {DATA.length > 0 && (
         <>
           <View
             style={{
@@ -135,12 +215,15 @@ const ScheduleScreen = ({navigation, route}) => {
             style={{width: 100, height: 100}}
           />
         </>
-      )}
+      )} */}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  dayBtn: {
+    fontFamily: FONTS.brandFont,
+  },
   input: {
     height: 40,
     margin: 12,

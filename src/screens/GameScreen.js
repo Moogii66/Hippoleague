@@ -17,23 +17,7 @@ import {wp, hp, ft, COLORS, FONTS} from '../constants/theme';
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 import color from 'color';
 
-export const DATA = [
-  {
-    id: '0',
-    title: 'NBA 2K21',
-    image: require('../assets/images/nba.png'),
-  },
-  {
-    id: '1',
-    title: 'FIFA 2021',
-    image: require('../assets/images/fifa.png'),
-  },
-  {
-    id: '2',
-    title: 'Table Soccer',
-    image: require('../assets/images/table.png'),
-  },
-];
+import {DATA} from '../data/DATA';
 
 const Item = ({item, onPress, backgroundColor, textColor}) => (
   <View>
@@ -58,7 +42,7 @@ const GameScreen = ({navigation}) => {
       <Item
         item={item}
         onPress={() =>
-          navigation.navigate('ScheduleScreen', {
+          navigation.navigate('ParticipatesScreen', {
             data: DATA,
             itemId: item.id,
           })

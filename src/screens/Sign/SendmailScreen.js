@@ -13,12 +13,12 @@ import {
   StatusBar,
 } from 'react-native';
 import {RFPercentage} from 'react-native-responsive-fontsize';
-import {icons, images, index, theme} from '../constants';
-import {wp, hp, ft, FONTS, COLORS} from '../constants/theme';
-import FormInput from '../components/FormInput';
+import {icons, images, index, theme} from '../../constants';
+import {wp, hp, ft, FONTS, COLORS} from '../../constants/theme';
+import FormInput from '../../components/FormInput';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const LoginScreen = ({navigation}) => {
+const SendmailScreen = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('test@mail.com');
   const [password, onChangePassword] = React.useState('password');
 
@@ -42,11 +42,9 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.form}>
-            {/* <View style={{justifyContent: 'flex-start'}}> */}
-            <FormInput placeholder="Name" />
-            <FormInput placeholder="Password" />
-            {/* </View> */}
-            <TouchableOpacity onPress={() => navigation.navigate('Tabs')}>
+            <Text style={styles.text}>Enter your email for verify</Text>
+            <FormInput placeholder="Email" keyboardType="email-address" />
+            <TouchableOpacity onPress={() => navigation.navigate('CodeScreen')}>
               <ImageBackground
                 source={images.button1}
                 style={{
@@ -63,9 +61,8 @@ const LoginScreen = ({navigation}) => {
                     color: COLORS.white,
                     paddingTop: hp(0.6),
                     margin: hp(1),
-                    fontSize: RFPercentage(1.7),
                   }}>
-                  SIGN IN
+                  Send
                 </Text>
               </ImageBackground>
             </TouchableOpacity>
@@ -103,4 +100,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SendmailScreen;

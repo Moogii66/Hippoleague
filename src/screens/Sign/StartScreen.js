@@ -9,10 +9,9 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
-import {icons, images, index, theme} from '../constants';
-import {wp, hp, ft, FONTS, COLORS} from '../constants/theme';
-import FormInput from '../components/FormInput';
-import * as Animatable from 'react-native-animatable';
+import {icons, images, index, theme} from '../../constants';
+import {wp, hp, ft, FONTS, COLORS} from '../../constants/theme';
+// import * as Animatable from 'react-native-animatable';
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 
 const StartScreen = ({navigation}) => {

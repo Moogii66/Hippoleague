@@ -35,6 +35,8 @@ export const COLORS = {
   greyText: '#C2C2C2',
   purpleText: '#D5A2FF',
   background: '#000325',
+  green: '#97D729',
+  red: '#FB2B3A',
 };
 
 export const SIZES = {

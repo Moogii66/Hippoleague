@@ -13,9 +13,9 @@ import {
   StatusBar,
 } from 'react-native';
 import {RFPercentage} from 'react-native-responsive-fontsize';
-import {icons, images, index, theme} from '../constants';
-import {wp, hp, ft, FONTS, COLORS} from '../constants/theme';
-import FormInput from '../components/FormInput';
+import {icons, images, index, theme} from '../../constants';
+import {wp, hp, ft, FONTS, COLORS} from '../../constants/theme';
+import FormInput from '../../components/FormInput';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const RegisterScreen = ({navigation}) => {
