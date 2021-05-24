@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   text: {
     color: COLORS.white,
     fontFamily: FONTS.brandFont,
-    marginTop: hp(0.7),
     fontSize: RFPercentage(1.8),
   },
 });
