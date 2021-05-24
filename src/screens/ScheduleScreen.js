@@ -66,6 +66,8 @@ const ScheduleScreen = ({navigation, route}) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingHorizontal: wp(3),
+          borderBottomColor: COLORS.brand,
+          borderWidth: 1,
         }}>
         <Text style={{fontFamily: FONTS.brandFont, color: COLORS.white}}>
           {chooseData}
@@ -87,7 +89,6 @@ const ScheduleScreen = ({navigation, route}) => {
           width: wp(100),
           height: hp(6),
           borderWidth: 1,
-          borderTopColor: COLORS.brand,
           borderBottomColor: COLORS.brand,
           flexDirection: 'row',
           alignItems: 'center',
