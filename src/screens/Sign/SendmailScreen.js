@@ -24,20 +24,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 const SendmailScreen = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('test@mail.com');
   const [password, onChangePassword] = React.useState('password');
-  useEffect(() => {
-    Keyboard.addListener('keyboardDidShow', _keyboardDidShow);
-    Keyboard.addListener('keyboardDidHide', _keyboardDidHide);
 
-    // cleanup function
-    return () => {
-      Keyboard.removeListener('keyboardDidShow', _keyboardDidShow);
-      Keyboard.removeListener('keyboardDidHide', _keyboardDidHide);
-    };
-  }, []);
-
-  const [keyboardStatus, setKeyboardStatus] = useState(undefined);
-  const _keyboardDidShow = () => setKeyboardStatus('Keyboard Shown');
-  const _keyboardDidHide = () => setKeyboardStatus('Keyboard Hidden');
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <ImageBackground
