@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  FlatList,
 } from 'react-native';
 // import {DATA} from './GameScreen';
 import AppBar from '../components/AppBar';
@@ -14,9 +15,54 @@ import {COLORS, FONTS, icons} from '../constants';
 import {hp, wp} from '../constants/theme';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 import {DATA} from '../data/DATA';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {userData} from '../data/Players';
 import Modal from 'react-native-modal';
+
+const Player = ({item, index}) => (
+  <View
+    style={{
+      width: wp(95),
+      height: hp(6),
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingRight: wp(4),
+      borderBottomWidth: 1,
+      borderBottomColor: COLORS.greyText,
+      alignSelf: 'center',
+    }}>
+    <Text style={[{color: COLORS.greyText, marginLeft: wp(4)}, styles.player]}>
+      {index + 1}
+    </Text>
+    <Image source={item.image} style={styles.avatar} />
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        flex: 1,
+      }}>
+      <Text
+        style={[{color: COLORS.greyText, marginLeft: wp(4)}, styles.player]}>
+        {item.name}
+      </Text>
+      <View
+        style={{
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          alignItems: 'center',
+          width: wp(21),
+        }}>
+        <Text style={[{color: COLORS.greyText}, styles.player]}>lvl </Text>
+        <Text style={[{color: COLORS.brand}, styles.player]}>{item.level}</Text>
+      </View>
+    </View>
+  </View>
+);
+
 const ParticipatesScreen = ({navigation, route}) => {
+  const sorted = userData.sort((a, b) => b.level - a.level);
+
+  const renderPlayers = ({item, index}) => <Player item={item} index={index} />;
+
   let itemID = 0;
 
   if (route.params?.itemId) {
@@ -84,6 +130,7 @@ const ParticipatesScreen = ({navigation, route}) => {
       </View>
     );
   }
+
   return (
     <SafeAreaView
       style={{
@@ -139,8 +186,8 @@ const ParticipatesScreen = ({navigation, route}) => {
       <View
         style={{
           height: hp(5),
-          borderColor: 'red',
-          borderWidth: 1,
+          // borderColor: 'red',
+          // borderWidth: 1,
           justifyContent: 'center',
           paddingLeft: wp(7),
         }}>
@@ -148,13 +195,22 @@ const ParticipatesScreen = ({navigation, route}) => {
           In League
         </Text>
       </View>
-      <ScrollView></ScrollView>
+      <FlatList data={sorted} renderItem={renderPlayers} />
       {bottomModal()}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  player: {
+    fontFamily: FONTS.brandFont,
+  },
+  avatar: {
+    width: wp(9.6),
+    height: hp(4.43),
+    resizeMode: 'contain',
+    marginLeft: wp(4),
+  },
   btnContainer: {
     width: wp(31),
     height: hp(4.55),

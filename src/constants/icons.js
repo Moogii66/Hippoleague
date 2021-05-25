@@ -9,6 +9,7 @@ export const ProfileFill = require('../assets/icons/ProfileFill.png');
 export const logOut = require('../assets/icons/logOut.png');
 export const drop = require('../assets/icons/drop.png');
 export const backBtn = require('../assets/icons/backBtn.png');
+export const editBtn = require('../assets/icons/editBtn.png');
 
 export default {
   Home,
@@ -19,6 +20,7 @@ export default {
   StandingsFill,
   Profile,
   ProfileFill,
+  editBtn,
   backBtn,
   drop,
   logOut,
