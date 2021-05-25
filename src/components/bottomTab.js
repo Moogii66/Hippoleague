@@ -5,7 +5,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import GameScreen from '../screens/GameScreen';
 import ScheduleScreen from '../screens/ScheduleScreen';
 import Standings from '../screens/StandingsScreen';
-import Profile from '../screens/Profile';
+import Profile from '../screens/ProfileScreen';
 import {Image, View, Text} from 'react-native';
 import {COLORS, FONTS, icons, images, index, theme, SIZES} from '../constants';
 import {hp, wp} from '../constants/theme';

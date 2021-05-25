@@ -1,9 +1,18 @@
 import React from 'react';
-import {Text, SafeAreaView, TextInput, StyleSheet, Button} from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  TextInput,
+  StyleSheet,
+  Button,
+  View,
+} from 'react-native';
+import {COLORS} from '../constants';
 
 const Profile = ({navigation}) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.background}}>
+      <View></View>
       <Text>Profile Screen</Text>
     </SafeAreaView>
   );
