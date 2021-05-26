@@ -30,7 +30,7 @@ const Profile = ({navigation}) => {
       <View
         style={{
           width: wp(100),
-          height: hp(30),
+          height: hp(15),
           borderColor: 'red',
           borderWidth: 1,
           justifyContent: 'center',
@@ -54,13 +54,13 @@ const Profile = ({navigation}) => {
                     width: wp(26.6),
                     height: hp(12.3),
                     resizeMode: 'contain',
-                    // borderRadius: wp(26.6),
+                    borderRadius: wp(26.6),
                   }}
                 />
               )}
             </>
           ))}
-          <View style={{flexDirection: 'column'}}>
+          <View style={{flexDirection: 'column', marginLeft: wp(3)}}>
             <View
               style={{
                 flexDirection: 'row',
@@ -78,7 +78,7 @@ const Profile = ({navigation}) => {
                     width: wp(7.53),
                     height: hp(6.09),
                     resizeMode: 'contain',
-                    // borderRadius: wp(26.6),
+                    marginLeft: wp(2),
                   }}
                 />
               </TouchableOpacity>
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.brandFont,
     color: COLORS.brand,
     fontSize: RFPercentage(2),
+    marginLeft: wp(2),
   },
   profileText: {
     fontFamily: FONTS.brandFont,
