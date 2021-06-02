@@ -11,6 +11,7 @@ import {
   Touchable,
   Modal,
   TextBase,
+  StatusBar,
 } from 'react-native';
 import {DATA} from './GameScreen';
 import AppBar from '../components/AppBar';
@@ -37,6 +38,7 @@ const StandingsScreen = ({navigation, route}) => {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.background}}>
+      <StatusBar barStyle="light-content" />
       <AppBar />
       <TouchableOpacity
         onPress={() => changeModalVisible(true)}

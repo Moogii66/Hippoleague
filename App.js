@@ -8,6 +8,8 @@ import StartScreen from './src/screens/Sign/StartScreen';
 import CodeScreen from './src/screens/Sign/CodeScreen';
 import RegisterScreen from './src/screens/Sign/RegisterScreen';
 import ParticipatesScreen from './src/screens/ParticipatesScreen';
+import CreateLeagueScreen from './src/screens/CreateLeagueScreen';
+import LeagueListScreen from './src/screens/LeagueListScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,12 +20,17 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={'Tabs'}>
+        initialRouteName={'Tabsr'}>
         <Stack.Screen name="Tabs" component={Tabs} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SendmailScreen" component={SendmailScreen} />
         <Stack.Screen name="CodeScreen" component={CodeScreen} />
         <Stack.Screen name="StartScreen" component={StartScreen} />
+        <Stack.Screen
+          name="CreateLeagueScreen"
+          component={CreateLeagueScreen}
+        />
+        <Stack.Screen name="LeagueListScreen" component={LeagueListScreen} />
         <Stack.Screen
           name="ParticipatesScreen"
           component={ParticipatesScreen}

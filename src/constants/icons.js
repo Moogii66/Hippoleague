@@ -10,6 +10,9 @@ export const logOut = require('../assets/icons/logOut.png');
 export const drop = require('../assets/icons/drop.png');
 export const backBtn = require('../assets/icons/backBtn.png');
 export const editBtn = require('../assets/icons/editBtn.png');
+export const plus = require('../assets/icons/plus.png');
+export const team = require('../assets/icons/team.png');
+export const teamFill = require('../assets/icons/teamFill.png');
 
 export default {
   Home,
@@ -20,6 +23,9 @@ export default {
   StandingsFill,
   Profile,
   ProfileFill,
+  teamFill,
+  team,
+  plus,
   editBtn,
   backBtn,
   drop,

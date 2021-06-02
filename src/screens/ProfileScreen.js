@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   SafeAreaView,
@@ -6,67 +6,79 @@ import {
   StyleSheet,
   Image,
   View,
+  Modal,
+  StatusBar,
 } from 'react-native';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 
 import {COLORS, FONTS, icons} from '../constants';
 import {hp, wp} from '../constants/theme';
 import {userData} from '../data/Players';
+import GamePicker from '../components/GamePicker';
+
+import CircleXp from '../components/CircleXp';
 
 const Profile = ({navigation}) => {
+  const [chooseData, setChooseData] = useState('Table Soccer');
+  const [modalVisible, setModalVisible] = useState(false);
+  const changeModalVisible = bool => {
+    setModalVisible(bool);
+  };
+
+  const setData = option => {
+    setChooseData(option);
+  };
+
+  const [chooseDay, setChooseDay] = useState('1');
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.background}}>
+      <StatusBar barStyle="light-content" />
       <View
         style={{
           width: wp(100),
-          height: hp(10),
-          borderColor: 'red',
-          borderWidth: 1,
+          height: hp(7),
+          // borderColor: 'red',
+          // borderWidth: 1,
+          paddingHorizontal: wp(3),
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          alignItems: 'center',
         }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Tabs')}>
-          <Image source={icons.backBtn} style={styles.backBtn} />
+        <TouchableOpacity
+          onPress={() => navigation.navigate('LeagueListScreen')}>
+          <Image source={icons.plus} style={styles.plusBtn} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.popToTop()}>
+          <Image source={icons.logOut} style={styles.plusBtn} />
         </TouchableOpacity>
       </View>
       <View
         style={{
           width: wp(100),
-          height: hp(15),
-          borderColor: 'red',
-          borderWidth: 1,
+          height: hp(16),
+          // borderColor: 'red',
+          // borderWidth: 1,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
         <View
           style={{
-            // width: wp(100),
-            // height: hp(25),
-            borderColor: 'red',
-            borderWidth: 1,
+            width: wp(80),
+            height: hp(16),
+            // borderColor: 'red',
+            // borderWidth: 1,
             flexDirection: 'row',
             alignItems: 'center',
+            justifyContent: 'space-evenly',
           }}>
-          {userData.map(item => (
-            <>
-              {item.id === 1 && (
-                <Image
-                  source={item.image}
-                  style={{
-                    width: wp(26.6),
-                    height: hp(12.3),
-                    resizeMode: 'contain',
-                    borderRadius: wp(26.6),
-                  }}
-                />
-              )}
-            </>
-          ))}
+          <CircleXp />
           <View style={{flexDirection: 'column', marginLeft: wp(3)}}>
             <View
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                borderColor: 'red',
-                borderWidth: 1,
+                // borderColor: 'red',
+                // borderWidth: 1,
               }}>
               <Text style={[{fontSize: RFPercentage(2.5)}, styles.profileText]}>
                 Moogii
@@ -87,8 +99,8 @@ const Profile = ({navigation}) => {
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                borderColor: 'red',
-                borderWidth: 1,
+                // borderColor: 'red',
+                // borderWidth: 1,
               }}>
               <Text style={[{fontSize: RFPercentage(2)}, styles.profileText]}>
                 Level
@@ -104,7 +116,50 @@ const Profile = ({navigation}) => {
           </View>
         </View>
       </View>
-      <Text>Profile Screen</Text>
+      <View
+        style={{
+          marginTop: hp(8),
+          marginBottom: hp(2),
+          // borderColor: 'red',
+          // borderWidth: 1,
+        }}>
+        <Text
+          style={{
+            color: COLORS.greyText,
+            fontFamily: FONTS.brandFont,
+            fontSize: RFPercentage(1.7),
+            marginLeft: wp(3),
+          }}>
+          RECENT MATCHES
+        </Text>
+      </View>
+      <TouchableOpacity
+        onPress={() => changeModalVisible(true)}
+        style={{
+          height: hp(6),
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingHorizontal: wp(3),
+          borderBottomColor: COLORS.brand,
+          borderTopColor: COLORS.brand,
+          borderWidth: 1,
+        }}>
+        <Text style={{fontFamily: FONTS.brandFont, color: COLORS.white}}>
+          {chooseData}
+        </Text>
+        <Image
+          source={icons.drop}
+          style={{resizeMode: 'contain', height: hp(1.7), width: wp(4.53)}}
+        />
+      </TouchableOpacity>
+      <Modal
+        transparent={true}
+        animationType="fade"
+        visible={modalVisible}
+        nRequestClose={() => changeModalVisible(false)}>
+        <GamePicker changeModalVisible={changeModalVisible} setData={setData} />
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -123,12 +178,12 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     margin: 12,
-    borderWidth: 1,
+    // borderWidth: 1,
   },
-  backBtn: {
+  plusBtn: {
     resizeMode: 'contain',
     width: wp(7.4),
-    height: hp(3.09),
+    height: hp(3.2),
     borderColor: 'white',
   },
 });

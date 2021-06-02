@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  StatusBar,
 } from 'react-native';
 // import {DATA} from './GameScreen';
 import AppBar from '../components/AppBar';
@@ -138,6 +139,7 @@ const ParticipatesScreen = ({navigation, route}) => {
         backgroundColor: COLORS.background,
         flexDirection: 'column',
       }}>
+      <StatusBar barStyle="light-content" />
       <AppBar />
       <View
         style={{

@@ -26,7 +26,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
       style={[[styles.item, backgroundColor], {borderRadius: 10}]}>
       <Image
         source={item.image}
-        style={[styles.image, {width: 260, height: 340}]}
+        style={[styles.image, {width: wp(69.3), height: hp(42)}]}
       />
     </TouchableOpacity>
   </View>
@@ -69,6 +69,7 @@ const GameScreen = ({navigation}) => {
   return (
     <View style={{flex: 1, backgroundColor: COLORS.background}}>
       <SafeAreaView style={{paddingTop: hp(2)}}>
+        <StatusBar barStyle="light-content" />
         <View
           style={{
             flexDirection: 'row',
